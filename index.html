@@ -1266,10 +1266,31 @@
         }
 
         .kaveriinst-recr-logo-track img {
-            width: 100px;
-            height: auto;
-            object-fit: contain;
-        }
+    width: 100px; /* normal desktop size */
+    height: auto;
+    object-fit: contain;
+}
+
+/* Tablet and smaller screens */
+@media (max-width: 768px) {
+    .kaveriinst-recr-logos-section {
+        height: 300px;
+    }
+    .kaveriinst-recr-logo-track img {
+        width: 90px; /* slightly bigger relative to smaller screens */
+    }
+}
+
+/* Small mobile phones */
+@media (max-width: 480px) {
+    .kaveriinst-recr-logos-section {
+        height: 250px;
+    }
+    .kaveriinst-recr-logo-track img {
+        width: 100px; /* make it full size on very small phones */
+    }
+}
+
 
         /* Animations */
         .kaveriinst-recr-left-to-right .kaveriinst-recr-logo-track {

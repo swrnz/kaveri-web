@@ -1416,60 +1416,91 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
         crossorigin="anonymous"></script>
 
-    <!-- Apply Now Floating Button Section -->
+    <!-- Apply Now and Download Brochure Floating Buttons Section -->
     <section class="applynow-floating">
-        <a href="applicationform.html" class="applynow-button">
-            Apply Now
-        </a>
+        <div class="rotated-button">
+            <a href="applicationform.html" class="applynow-button">
+                Apply Now
+            </a>
+        </div>
+        <div class="rotated-button">
+            <a href="brchr/kaveri_brouchure.pdf" download class="download-button">
+                Download Brochure
+            </a>
+        </div>
     </section>
 
     <style>
-        /* Apply Now Floating Button Styles */
+        /* Floating Container */
         .applynow-floating {
             position: fixed;
             top: 50%;
-            right: -45px;
+            right: 1%;
             transform: translateY(-50%);
             z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 70px;
+            /* Space between buttons */
         }
 
-        .applynow-button {
-            display: flex;
+        /* Rotate Wrapper */
+        .rotated-button {
+            transform: rotate(-90deg);
+            transform-origin: right center;
+        }
+
+        /* Common Button Styles */
+        .applynow-button,
+        .download-button {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #f39c12, #e67e22);
-            /* Yellow-Orange Gradient */
-            color: white;
-            padding: 10px 20px;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
+            padding: 8px 16px;
+            border-radius: 6px;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 14px;
             font-weight: 600;
-            transform: rotate(-90deg);
-            /* Rotate the button */
-            transform-origin: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
             white-space: nowrap;
+        }
+
+        /* Apply Now Button */
+        .applynow-button {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
         }
 
         .applynow-button:hover {
             background: linear-gradient(135deg, #e67e22, #f39c12);
-            /* Invert gradient on hover */
-            padding: 12px 22px;
+        }
+
+        /* Download Brochure Button */
+        .download-button {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .download-button:hover {
+            background-color: #c0392b;
         }
 
         /* Responsive */
         @media(max-width: 768px) {
-            .applynow-button {
-                font-size: 16px;
-                padding: 8px 18px;
+
+            .applynow-button,
+            .download-button {
+                font-size: 14px;
+                padding: 6px 12px;
+                padding-bottom: 25px;
+            }
+
+            .applynow-floating {
+                gap: 60px;
             }
         }
     </style>
-
-
 
 
     <!-- Footer Section Start -->

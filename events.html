@@ -36,18 +36,7 @@
     <!-- Main Custom Css -->
     <link href="css/custom.css" rel="stylesheet" media="screen">
 
-     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-        }
-
+    <style>
         .gallery-section {
             padding: 20px;
             min-height: 100vh;
@@ -75,49 +64,54 @@
             color: #666;
         }
 
-        /* Video Wrapper for Blur Effect */
+        /* YouTube Video Container */
         .video-wrapper {
             width: 100%;
-            position: relative;
             margin-bottom: 40px;
             display: flex;
             justify-content: center;
         }
 
-        /* Video Container Styles */
-        .video-container {
+        .youtube-container {
             position: relative;
             width: 100%;
             max-width: 300px;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* Blurred Edge Overlay - Only affects edges */
+        /* Blurred Edge Overlay - Only for mobile */
         .video-blur-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(
-                to right, 
-                rgba(245,245,245,1) 0%, 
-                transparent 10%, 
-                transparent 85%, 
-                rgba(245,245,245,1) 100%
-            );
+            background: linear-gradient(to right,
+                    rgba(245, 245, 245, 1) 0%,
+                    transparent 15%,
+                    transparent 85%,
+                    rgba(245, 245, 245, 1) 100%);
             pointer-events: none;
         }
 
-        /* Mobile - Portrait Video */
-        .video-container video {
+        /* Responsive YouTube Embed */
+        .youtube-embed {
+            position: relative;
+            padding-bottom: 177.78%;
+            /* 9:16 Aspect Ratio (portrait) */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .youtube-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            aspect-ratio: 9/16;
-            display: block;
-            object-fit: cover;
+            height: 100%;
+            border: none;
         }
 
         /* Gallery Styles */
@@ -160,9 +154,9 @@
             .gallery-container {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
-            .video-container {
-                max-width: 250px;
+
+            .youtube-container {
+                max-width: 350px;
             }
         }
 
@@ -178,13 +172,14 @@
             }
 
             /* Full-width video on desktop */
-            .video-container {
+            .youtube-container {
                 max-width: 100%;
                 border-radius: 0;
             }
 
-            .video-container video {
-                aspect-ratio: 16/9;
+            .youtube-embed {
+                padding-bottom: 56.25%;
+                /* 16:9 Aspect Ratio (landscape) */
             }
 
             /* Hide blur overlay on desktop */
@@ -271,7 +266,8 @@
                                     <ul class="submenulist" style="background-color: white;">
                                         <li class="nav-item"><a class="nav-link" href="courses.html">All Courses</a>
                                         </li>
-                                        <li class="nav-item submenu"><a class="nav-link" href="courses.html">Management</a>
+                                        <li class="nav-item submenu"><a class="nav-link"
+                                                href="courses.html">Management</a>
                                             <ul class="submenulist" style="background-color: white;">
                                                 <li class="nav-item"><a class="nav-link" href="courses.html">BBA</a>
                                                 </li>
@@ -291,12 +287,14 @@
                                         </li>
                                         <li class="nav-item submenu"><a class="nav-link" href="courses.html">Nursing</a>
                                             <ul class="submenulist" style="background-color: white;">
-                                                <li class="nav-item"><a class="nav-link" href="courses.html">BSc Nursing</a>
+                                                <li class="nav-item"><a class="nav-link" href="courses.html">BSc
+                                                        Nursing</a>
                                                 <li class="nav-item"><a class="nav-link" href="courses.html">GNM</a>
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li class="nav-item submenu"><a class="nav-link" href="">Allied Health Science</a>
+                                        <li class="nav-item submenu"><a class="nav-link" href="">Allied Health
+                                                Science</a>
                                             <ul class="submenulist" style="background-color: white;">
                                                 <li class="nav-item"><a class="nav-link" href="courses.html">BSc MIT</a>
                                                 </li>
@@ -306,7 +304,8 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li class="nav-item submenu"><a class="nav-link" href="courses.html">Paramedical Diploma</a>
+                                        <li class="nav-item submenu"><a class="nav-link" href="courses.html">Paramedical
+                                                Diploma</a>
                                             <ul class="submenulist" style="background-color: white;">
                                                 <li class="nav-item"><a class="nav-link" href="courses.html">Diploma
                                                         MLT</a></li>
@@ -320,7 +319,7 @@
                                         </li>
                                         <li class="nav-item"><a class="nav-link" href="courses.html">BPT</a>
                                         </li>
-            
+
                                         <li class="nav-item"><a class="nav-link" href="courses.html">Arts & Science</a>
                                         </li>
                                     </ul>
@@ -348,20 +347,26 @@
     </header>
     <!-- Header End -->
 
-   <section class="gallery-section">
+    <section class="gallery-section">
         <!-- Header Section -->
         <div class="gallery-header">
             <h1>Events</h1>
             <p>At Kaveri Institutions</p>
         </div>
 
-        <!-- Video Section with Blurred Edges -->
+        <!-- YouTube Shorts Video Section -->
         <div class="video-wrapper">
-            <div class="video-container">
-                <video autoplay muted loop playsinline>
-                    <source src="videos/Trip1.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+            <div class="youtube-container">
+                <div class="youtube-embed">
+                    <!-- Embedded YouTube Shorts video -->
+                    <iframe
+                        src="https://www.youtube.com/embed/IPWlfjalURc?autoplay=1&mute=1&loop=1&playlist=IPWlfjalURc,2iO8FlM8ZMg"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+
+                </div>
                 <div class="video-blur-overlay"></div>
             </div>
         </div>

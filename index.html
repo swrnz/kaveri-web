@@ -1423,11 +1423,7 @@
                 Apply Now
             </a>
         </div>
-        <div class="rotated-button">
-            <a href="brchr/kaveri_brouchure.pdf" download class="download-button">
-                Download Brochure
-            </a>
-        </div>
+        
     </section>
 
     <style>
@@ -1452,8 +1448,7 @@
         }
 
         /* Common Button Styles */
-        .applynow-button,
-        .download-button {
+        .applynow-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -1476,34 +1471,9 @@
             background: linear-gradient(135deg, #e67e22, #f39c12);
         }
 
-        /* Download Brochure Button */
-        .download-button {
-            background-color: #e74c3c;
-            color: white;
-        }
-
-        .download-button:hover {
-            background-color: #c0392b;
-        }
-
         /* Responsive */
         @media(max-width: 768px) {
-
-             .applynow-floating {
-            position: fixed;
-            top: 30%;
-            right: 1%;
-            transform: translateY(-50%);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 70px;
-            /* Space between buttons */
-        }
-
-            .applynow-button,
-            .download-button {
+            .applynow-button{
                 font-size: 14px;
                 padding: 6px 12px;
                 padding-bottom: 25px;
@@ -1597,34 +1567,85 @@
                 </div>
 
                 <div class="col-lg-12">
-                    <!-- About Footer Start -->
-                    <div class="footer-cta-box">
-                        <!-- Footer Logo Start -->
-                        <div class="footer-logo">
-                            <img src="images/Kaveri Images/kaveri-logo-3.png" alt="">
-                        </div>
-                        <!-- Footer Logo End -->
+                    <div class="custom-footer-container">
 
-                        <!-- Footer Contact Box Start -->
-                        <div class="footer-contact-box">
-                            <!-- Footer Contact Item Start -->
-                            <div class="footer-contact-item">
-                                <p style="color: #000;">For Enquiries</p>
-                                <h3 style="color: #000;font-size: 12px">080 50723945</h3>
-                            </div>
-                            <!-- Footer Contact Item End -->
-
-                            <!-- Footer Contact Item Start -->
-                            <div class="footer-contact-item">
-                                <p style="color: #000;">e-mail</p>
-                                <h3 style="color: #000; font-size: 12px;">info@kaveriinstitutions.com</h3>
-                            </div>
-                            <!-- Footer Contact Item End -->
+                        <!-- Logo -->
+                        <div class="custom-footer-logo">
+                            <img src="images/Kaveri Images/kaveri-logo-3.png" alt="Kaveri Logo">
                         </div>
-                        <!-- Footer Contact Box End -->
+
+                        <!-- Contact Info -->
+                        <div class="custom-footer-contact">
+                            <!-- Phone -->
+                            <a href="tel:08050723945" class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>080 50723945</span>
+                            </a>
+                            <!-- Email (visible icon only) -->
+                            <a href="mailto:info@kaveriinstitutions.com" class="contact-icon" title="Email us">
+                                <i class="fas fa-envelope" style="font-size: 22px;"></i>
+                                <span>info@kaveriinstitutions.com</span>
+                            </a>
+                        </div>
                     </div>
-                    <!-- About Footer End -->
                 </div>
+
+                <!-- Include Font Awesome -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+                <style>
+                    .custom-footer-container {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        padding: 20px;
+                        background-color: #f2f2f2;
+                    }
+
+                    .custom-footer-logo img {
+                        max-width: 180px;
+                        height: auto;
+                    }
+
+                    .custom-footer-contact {
+                        display: flex;
+                        gap: 30px;
+                        align-items: center;
+                    }
+
+                    .contact-icon {
+                        text-decoration: none;
+                        color: #000;
+                        font-size: 16px;
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        transition: transform 0.2s;
+                    }
+
+                    .contact-icon:hover {
+                        transform: scale(1.05);
+                    }
+
+                    .contact-icon i {
+                        font-size: 20px;
+                    }
+
+                    @media (max-width: 768px) {
+                        .custom-footer-container {
+                            flex-direction: column;
+                            align-items: flex-start;
+                            gap: 20px;
+                        }
+
+                        .custom-footer-contact {
+                            flex-direction: row;
+                            justify-content: flex-start;
+                        }
+                    }
+                </style>
+
             </div>
 
             <!-- Footer Copyright Section Start -->

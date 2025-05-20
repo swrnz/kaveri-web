@@ -187,68 +187,81 @@
     <!-- affliations section start -->
     <style>
         .kaveriinst-affl-section-wrapper {
-          text-align: center;
-          padding: 2rem;
-        }
-        
-        .kaveriinst-affl-heading {
-          font-size: 2rem;
-          font-weight: bold;
-          margin-bottom: 2rem;
-        }
-        
-        .kaveriinst-affl-section {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-        
-        .kaveriinst-affl-item {
-          width: 100%;
-          max-width: 300px;
-          text-align: center;
-          opacity: 0;
-          transform: translateY(20px);
-          animation: kaveriinst-affl-fadeIn 1s ease forwards;
-        }
-        
-        .kaveriinst-affl-item:nth-child(1) {
-          animation-delay: 0.2s;
-        }
-        .kaveriinst-affl-item:nth-child(2) {
-          animation-delay: 0.4s;
-        }
-        .kaveriinst-affl-item:nth-child(3) {
-          animation-delay: 0.6s;
-        }
-        .kaveriinst-affl-item:nth-child(4) {
-          animation-delay: 0.8s;
-        }
-        
-        .kaveriinst-affl-item img {
-          width: 100%;
-          height: 40%;
-          object-fit: contain;
-        }
-        
-        .kaveriinst-affl-name {
-          margin-top: 1rem;
-          font-size: 1.5rem;
-          font-weight: bold;
-        }
-        
-        @keyframes kaveriinst-affl-fadeIn {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @media (min-width: 768px) {
-          .kaveriinst-affl-item {
-            flex: 0 0 calc(50% - 2rem);
-          }
-        }
+  text-align: center;
+  padding: 2rem;
+}
+
+.kaveriinst-affl-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.kaveriinst-affl-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem; /* spacing between items */
+}
+
+.kaveriinst-affl-item {
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: kaveriinst-affl-fadeIn 1s ease forwards;
+}
+
+.kaveriinst-affl-item:nth-child(1) { animation-delay: 0.2s; }
+.kaveriinst-affl-item:nth-child(2) { animation-delay: 0.4s; }
+.kaveriinst-affl-item:nth-child(3) { animation-delay: 0.6s; }
+.kaveriinst-affl-item:nth-child(4) { animation-delay: 0.8s; }
+
+.kaveriinst-affl-item img {
+  width: 100%;
+  height: 40%;
+  object-fit: contain;
+}
+
+.kaveriinst-affl-name {
+  margin-top: 0.75rem; /* reduced from 1rem */
+  font-size: 1.4rem; /* slightly smaller */
+  font-weight: bold;
+}
+
+@keyframes kaveriinst-affl-fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .kaveriinst-affl-item {
+    flex: 0 0 calc(50% - 1rem);
+  }
+}
+
+/* Mobile-specific spacing optimization */
+@media (max-width: 767px) {
+  .kaveriinst-affl-section-wrapper {
+    padding: 1.5rem; /* reduced from 2rem */
+  }
+
+  .kaveriinst-affl-heading {
+    margin-bottom: 1.5rem; /* reduced heading spacing */
+  }
+
+  .kaveriinst-affl-section {
+    gap: 1rem; /* tighter item gap on mobile */
+  }
+
+  .kaveriinst-affl-name {
+    font-size: 1.2rem; /* slightly smaller name text */
+    margin-top: 0.5rem;
+  }
+}
         </style>
         
         <div class="kaveriinst-affl-section-wrapper">
@@ -257,7 +270,7 @@
           <section class="kaveriinst-affl-section">
             <div class="kaveriinst-affl-item">
               <img src="images/Kaveri Images/aff-bu.webp" alt="Logo 1">
-              <div class="kaveriinst-affl-name">Affiliated to Bangalore University</div>
+              <div class="kaveriinst-affl-name">Affiliated to Banglore University</div>
             </div>
             <div class="kaveriinst-affl-item">
               <img src="images/Kaveri Images/afl-img-rguhs.jpg" alt="Logo 2">

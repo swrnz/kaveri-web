@@ -219,7 +219,7 @@
 
                     <!-- Main Menu Start -->
                     <div class="collapse navbar-collapse main-menu">
-                         <div class="nav-menu-wrapper">
+                        <div class="nav-menu-wrapper">
                             <ul class="navbar-nav mr-auto" id="menu">
                                 <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                                 <li class="nav-item submenu"><a class="nav-link" href="about.html">About</a>
@@ -234,7 +234,8 @@
                                     <ul class="submenulist" style="background-color: white;">
                                         <li class="nav-item"><a class="nav-link" href="courses.html">All Courses</a>
                                         </li>
-                                        <li class="nav-item submenu"><a class="nav-link" href="courses.html">Management</a>
+                                        <li class="nav-item submenu"><a class="nav-link"
+                                                href="courses.html">Management</a>
                                             <ul class="submenulist" style="background-color: white;">
                                                 <li class="nav-item"><a class="nav-link" href="courses.html">BBA</a>
                                                 </li>
@@ -254,12 +255,14 @@
                                         </li>
                                         <li class="nav-item submenu"><a class="nav-link" href="courses.html">Nursing</a>
                                             <ul class="submenulist" style="background-color: white;">
-                                                <li class="nav-item"><a class="nav-link" href="courses.html">BSc Nursing</a>
+                                                <li class="nav-item"><a class="nav-link" href="courses.html">BSc
+                                                        Nursing</a>
                                                 <li class="nav-item"><a class="nav-link" href="courses.html">GNM</a>
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li class="nav-item submenu"><a class="nav-link" href="">Allied Health Science</a>
+                                        <li class="nav-item submenu"><a class="nav-link" href="">Allied Health
+                                                Science</a>
                                             <ul class="submenulist" style="background-color: white;">
                                                 <li class="nav-item"><a class="nav-link" href="courses.html">BSc MIT</a>
                                                 </li>
@@ -269,7 +272,8 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li class="nav-item submenu"><a class="nav-link" href="courses.html">Paramedical Diploma</a>
+                                        <li class="nav-item submenu"><a class="nav-link" href="courses.html">Paramedical
+                                                Diploma</a>
                                             <ul class="submenulist" style="background-color: white;">
                                                 <li class="nav-item"><a class="nav-link" href="courses.html">Diploma
                                                         MLT</a></li>
@@ -283,7 +287,7 @@
                                         </li>
                                         <li class="nav-item"><a class="nav-link" href="courses.html">BPT</a>
                                         </li>
-            
+
                                         <li class="nav-item"><a class="nav-link" href="courses.html">Arts & Science</a>
                                         </li>
                                     </ul>
@@ -316,67 +320,67 @@
         <p class="kaveriinst-affl-admission-subtext">
             Please fill out the form. Our admission coordinator will verify your details and contact you shortly.
         </p>
-    
+
         <section class="kaveriinst-affl-admission-section">
             <div class="kaveriinst-affl-admission-left">
                 <img src="images/Kaveri Images/application-form.avif" alt="Admission Image">
             </div>
-    
+
             <div class="kaveriinst-affl-admission-right">
                 <form class="kaveriinst-affl-admission-form" id="admissionForm">
                     <input type="text" placeholder="Full Name" required>
                     <input type="email" placeholder="Email" required>
                     <input type="tel" placeholder="Contact No" required>
-    
+
                     <select id="state" required>
                         <option value="">Select State</option>
                     </select>
-    
+
                     <select id="city" required>
                         <option value="">Select City / District</option>
                     </select>
-    
+
                     <select id="level" required onchange="updateSpecialization()">
                         <option value="">Select Level</option>
                         <option value="ug">UG</option>
                         <option value="pg">PG</option>
                     </select>
-    
+
                     <select id="specialization" required>
                         <option value="">Select Specialization</option>
                     </select>
-    
+
                     <button type="submit" id="submitBtn">Submit Application</button>
                 </form>
             </div>
         </section>
     </div>
     <!-- Admission Form Ends -->
-    
+
     <!-- EmailJS Library -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    
+
     <script>
         (function () {
             emailjs.init('8TyOg3ZVyR4dplCRw'); // your public key
         })();
     </script>
-    
+
     <script>
         async function loadStatesAndDistricts() {
             const stateSelect = document.getElementById('state');
             const citySelect = document.getElementById('city');
-    
+
             const response = await fetch('states-and-districts.json'); // Your JSON file
             const data = await response.json();
-    
+
             for (const state in data) {
                 const option = document.createElement('option');
                 option.value = state;
                 option.textContent = state;
                 stateSelect.appendChild(option);
             }
-    
+
             stateSelect.addEventListener('change', function () {
                 citySelect.innerHTML = '<option value="">Select City / District</option>';
                 const selectedState = this.value;
@@ -390,12 +394,12 @@
                 }
             });
         }
-    
+
         function updateSpecialization() {
             const level = document.getElementById('level').value;
             const specialization = document.getElementById('specialization');
             specialization.innerHTML = '<option value="">Select Specialization</option>';
-    
+
             if (level === 'ug') {
                 const ugCourses = [
                     "BBA", "BBA Advanced", "BCA", "BCA Advanced", "BCom", "BCom Advanced",
@@ -419,19 +423,19 @@
                 });
             }
         }
-    
+
         document.getElementById('admissionForm').addEventListener('submit', function (e) {
             e.preventDefault();
-    
+
             const submitButton = document.getElementById('submitBtn');
             // Disable button and change style
             submitButton.disabled = true;
             submitButton.textContent = 'Submitting...';
             submitButton.style.backgroundColor = '#cccccc';
             submitButton.style.cursor = 'not-allowed';
-    
+
             const submissionId = 'APP' + Date.now();
-    
+
             const templateParams = {
                 full_name: document.querySelector('input[placeholder="Full Name"]').value,
                 email: document.querySelector('input[placeholder="Email"]').value,
@@ -442,13 +446,13 @@
                 specialization: document.getElementById('specialization').value,
                 application_id: submissionId
             };
-    
+
             emailjs.send('service_848fi89', 'template_tj70gf1', templateParams)
                 .then(function (response) {
                     console.log('SUCCESS!', response.status, response.text);
                     showSuccessPopup(submissionId);
                     document.getElementById('admissionForm').reset();
-                    
+
                     // Reset button to original state
                     submitButton.disabled = false;
                     submitButton.textContent = 'Submit Application';
@@ -457,7 +461,7 @@
                 }, function (error) {
                     console.log('FAILED...', error);
                     alert('Failed to submit the form. Please try again later.');
-                    
+
                     // Reset button to original state even on failure
                     submitButton.disabled = false;
                     submitButton.textContent = 'Submit Application';
@@ -465,7 +469,7 @@
                     submitButton.style.cursor = '';
                 });
         });
-    
+
         function showSuccessPopup(appId) {
             const popup = document.createElement('div');
             popup.innerHTML = `
@@ -503,283 +507,294 @@
           `;
             document.body.appendChild(popup);
         }
-    
+
         window.onload = loadStatesAndDistricts;
     </script>
 
 
-<!-- Admission Process Roadmap Section -->
-<section class="admission-process-section">
-    <style>
-        /* Admission Process Roadmap Styles */
-        .admission-process-section {
-            padding: 80px 20px;
-            background-color: #f8f9fa;
-            position: relative;
-        }
-        
-        .admission-process-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .admission-process-heading {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-        
-        .admission-process-heading h2 {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-        
-        .admission-process-heading p {
-            color: #7f8c8d;
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .admission-process-heading::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #f1c40f, #e67e22); /* yellow to orange */
-            border-radius: 2px;
-        }
-        
-        .roadmap {
-            position: relative;
-            padding: 40px 0;
-        }
-        
-        .roadmap::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, #f1c40f, #e67e22); /* yellow to orange */
-            border-radius: 2px;
-        }
-        
-        .roadmap-items {
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-        }
-        
-        .roadmap-item {
-            position: relative;
-            width: calc(50% - 60px);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            background: white;
-            transition: all 0.3s ease;
-        }
-        
-        .roadmap-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        .roadmap-item:nth-child(odd) {
-            align-self: flex-start;
-            margin-left: 60px;
-        }
-        
-        .roadmap-item:nth-child(even) {
-            align-self: flex-end;
-            margin-right: 60px;
-        }
-        
-        .roadmap-item::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #f1c40f, #e67e22); /* yellow to orange */
-            transform: translateY(-50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            box-shadow: 0 0 0 6px rgba(241, 196, 15, 0.2); /* yellowish glow */
-        }
-        
-        .roadmap-item:nth-child(odd)::before {
-            left: -75px;
-        }
-        
-        .roadmap-item:nth-child(even)::before {
-            right: -75px;
-        }
-        
-        .roadmap-item:nth-child(1)::before {
-            content: '1';
-        }
-        
-        .roadmap-item:nth-child(2)::before {
-            content: '2';
-        }
-        
-        .roadmap-item:nth-child(3)::before {
-            content: '3';
-        }
-        
-        .roadmap-item:nth-child(4)::before {
-            content: '4';
-        }
-        
-        .roadmap-item:nth-child(5)::before {
-            content: '5';
-        }
-        
-        .roadmap-item h3 {
-            margin-top: 0;
-            color: #2c3e50;
-            font-size: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .roadmap-item h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, #f1c40f, #e67e22); /* yellow to orange */
-            border-radius: 2px;
-        }
-        
-        .roadmap-item p {
-            color: #7f8c8d;
-            line-height: 1.6;
-            margin-bottom: 0;
-        }
-        
-        .roadmap-icon {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: #f1c40f; /* yellow color for icons */
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 768px) {
+    <!-- Admission Process Roadmap Section -->
+    <section class="admission-process-section">
+        <style>
+            /* Admission Process Roadmap Styles */
             .admission-process-section {
-                padding: 60px 20px;
+                padding: 80px 20px;
+                background-color: #f8f9fa;
+                position: relative;
             }
-            
-            .admission-process-heading h2 {
-                font-size: 2rem;
-            }
-            
-            .roadmap::before {
-                left: 30px;
-            }
-            
-            .roadmap-items {
-                gap: 40px;
-            }
-            
-            .roadmap-item {
-                width: calc(100% - 90px);
-                margin-left: 60px !important;
-                margin-right: 0 !important;
-                padding: 25px;
-            }
-            
-            .roadmap-item:nth-child(odd)::before,
-            .roadmap-item:nth-child(even)::before {
-                left: -60px;
-                right: auto;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .admission-process-heading h2 {
-                font-size: 1.8rem;
-            }
-            
-            .admission-process-heading p {
-                font-size: 1rem;
-            }
-            
-            .roadmap-item {
-                padding: 20px;
-            }
-            
-            .roadmap-item h3 {
-                font-size: 1.3rem;
-            }
-            
-            .roadmap-icon {
-                font-size: 1.8rem;
-            }
-        }
-    </style>    
 
-    <div class="admission-process-container">
-        <div class="admission-process-heading">
-            <h2>Our Admission Process</h2>
-        </div>
-        
-        <div class="roadmap">
-            <div class="roadmap-items">
-                <!-- Step 1 -->
-                <div class="roadmap-item">
-                    <div class="roadmap-icon">📝</div>
-                    <h3>Submit the Application</h3>
-                    <p>Complete and submit your online application form with all required documents. Our team will review your application.</p>
-                </div>
-                
-                <!-- Step 2 -->
-                <div class="roadmap-item">
-                    <div class="roadmap-icon">🔍</div>
-                    <h3>Verification</h3>
-                    <p>Our admission team will verify all your submitted documents and information. You may be contacted for additional details if needed.</p>
-                </div>
-                
-                <!-- Step 3 -->
-                <div class="roadmap-item">
-                    <div class="roadmap-icon">✅</div>
-                    <h3>Eligibility Check</h3>
-                    <p>We'll assess your qualifications against our program requirements. You'll receive notification of your eligibility status via email.</p>
-                </div>
-                
-                <!-- Step 4 -->
-                <div class="roadmap-item">
-                    <div class="roadmap-icon">💳</div>
-                    <h3>Payment Completion</h3>
-                    <p>Once eligible, you'll receive payment instructions. Complete your admission fee payment to secure your seat in the program.</p>
-                </div>
-                
-                <!-- Step 5 -->
-                <div class="roadmap-item">
-                    <div class="roadmap-icon">🎓</div>
-                    <h3>Issuing Admission Letter</h3>
-                    <p>After successful payment, your official admission letter will be issued and your seat will be confirmed  .</p>
+            .admission-process-container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .admission-process-heading {
+                text-align: center;
+                margin-bottom: 60px;
+                position: relative;
+            }
+
+            .admission-process-heading h2 {
+                font-size: 2.5rem;
+                color: #2c3e50;
+                margin-bottom: 15px;
+            }
+
+            .admission-process-heading p {
+                color: #7f8c8d;
+                font-size: 1.1rem;
+                max-width: 700px;
+                margin: 0 auto;
+            }
+
+            .admission-process-heading::after {
+                content: '';
+                position: absolute;
+                bottom: -15px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 4px;
+                background: linear-gradient(90deg, #f1c40f, #e67e22);
+                /* yellow to orange */
+                border-radius: 2px;
+            }
+
+            .roadmap {
+                position: relative;
+                padding: 40px 0;
+            }
+
+            .roadmap::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 4px;
+                height: 100%;
+                background: linear-gradient(to bottom, #f1c40f, #e67e22);
+                /* yellow to orange */
+                border-radius: 2px;
+            }
+
+            .roadmap-items {
+                display: flex;
+                flex-direction: column;
+                gap: 60px;
+            }
+
+            .roadmap-item {
+                position: relative;
+                width: calc(50% - 60px);
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                background: white;
+                transition: all 0.3s ease;
+            }
+
+            .roadmap-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            }
+
+            .roadmap-item:nth-child(odd) {
+                align-self: flex-start;
+                margin-left: 60px;
+            }
+
+            .roadmap-item:nth-child(even) {
+                align-self: flex-end;
+                margin-right: 60px;
+            }
+
+            .roadmap-item::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #f1c40f, #e67e22);
+                /* yellow to orange */
+                transform: translateY(-50%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-weight: bold;
+                box-shadow: 0 0 0 6px rgba(241, 196, 15, 0.2);
+                /* yellowish glow */
+            }
+
+            .roadmap-item:nth-child(odd)::before {
+                left: -75px;
+            }
+
+            .roadmap-item:nth-child(even)::before {
+                right: -75px;
+            }
+
+            .roadmap-item:nth-child(1)::before {
+                content: '1';
+            }
+
+            .roadmap-item:nth-child(2)::before {
+                content: '2';
+            }
+
+            .roadmap-item:nth-child(3)::before {
+                content: '3';
+            }
+
+            .roadmap-item:nth-child(4)::before {
+                content: '4';
+            }
+
+            .roadmap-item:nth-child(5)::before {
+                content: '5';
+            }
+
+            .roadmap-item h3 {
+                margin-top: 0;
+                color: #2c3e50;
+                font-size: 1.5rem;
+                position: relative;
+                padding-bottom: 10px;
+                margin-bottom: 15px;
+            }
+
+            .roadmap-item h3::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 50px;
+                height: 3px;
+                background: linear-gradient(90deg, #f1c40f, #e67e22);
+                /* yellow to orange */
+                border-radius: 2px;
+            }
+
+            .roadmap-item p {
+                color: #7f8c8d;
+                line-height: 1.6;
+                margin-bottom: 0;
+            }
+
+            .roadmap-icon {
+                font-size: 2rem;
+                margin-bottom: 15px;
+                color: #f1c40f;
+                /* yellow color for icons */
+            }
+
+            /* Responsive Styles */
+            @media (max-width: 768px) {
+                .admission-process-section {
+                    padding: 60px 20px;
+                }
+
+                .admission-process-heading h2 {
+                    font-size: 2rem;
+                }
+
+                .roadmap::before {
+                    left: 30px;
+                }
+
+                .roadmap-items {
+                    gap: 40px;
+                }
+
+                .roadmap-item {
+                    width: calc(100% - 90px);
+                    margin-left: 60px !important;
+                    margin-right: 0 !important;
+                    padding: 25px;
+                }
+
+                .roadmap-item:nth-child(odd)::before,
+                .roadmap-item:nth-child(even)::before {
+                    left: -60px;
+                    right: auto;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .admission-process-heading h2 {
+                    font-size: 1.8rem;
+                }
+
+                .admission-process-heading p {
+                    font-size: 1rem;
+                }
+
+                .roadmap-item {
+                    padding: 20px;
+                }
+
+                .roadmap-item h3 {
+                    font-size: 1.3rem;
+                }
+
+                .roadmap-icon {
+                    font-size: 1.8rem;
+                }
+            }
+        </style>
+
+        <div class="admission-process-container">
+            <div class="admission-process-heading">
+                <h2>Our Admission Process</h2>
+            </div>
+
+            <div class="roadmap">
+                <div class="roadmap-items">
+                    <!-- Step 1 -->
+                    <div class="roadmap-item">
+                        <div class="roadmap-icon">📝</div>
+                        <h3>Submit the Application</h3>
+                        <p>Complete and submit your online application form with all required documents. Our team will
+                            review your application.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="roadmap-item">
+                        <div class="roadmap-icon">🔍</div>
+                        <h3>Verification</h3>
+                        <p>Our admission team will verify all your submitted documents and information. You may be
+                            contacted for additional details if needed.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="roadmap-item">
+                        <div class="roadmap-icon">✅</div>
+                        <h3>Eligibility Check</h3>
+                        <p>We'll assess your qualifications against our program requirements. You'll receive
+                            notification of your eligibility status via email.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="roadmap-item">
+                        <div class="roadmap-icon">💳</div>
+                        <h3>Payment Completion</h3>
+                        <p>Once eligible, you'll receive payment instructions. Complete your admission fee payment to
+                            secure your seat in the program.</p>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="roadmap-item">
+                        <div class="roadmap-icon">🎓</div>
+                        <h3>Issuing Admission Letter</h3>
+                        <p>After successful payment, your official admission letter will be issued and your seat will be
+                            confirmed .</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- End Admission Process Roadmap Section -->
+    </section>
+    <!-- End Admission Process Roadmap Section -->
 
     <!-- Footer Section Start -->
     <footer class="main-footer">
@@ -862,34 +877,101 @@
                 </div>
 
                 <div class="col-lg-12">
-                    <!-- About Footer Start -->
-                    <div class="footer-cta-box">
-                        <!-- Footer Logo Start -->
-                        <div class="footer-logo">
-                            <img src="images/Kaveri Images/kaveri-logo-3.png" alt="">
-                        </div>
-                        <!-- Footer Logo End -->
+                    <div class="custom-footer-container">
 
-                        <!-- Footer Contact Box Start -->
-                        <div class="footer-contact-box">
-                            <!-- Footer Contact Item Start -->
-                            <div class="footer-contact-item">
-                                <p style="color: #000;">For Enquiries</p>
-                                <h3 style="color: #000;font-size: 12px">080 50723945</h3>
-                            </div>
-                            <!-- Footer Contact Item End -->
-
-                            <!-- Footer Contact Item Start -->
-                            <div class="footer-contact-item">
-                                <p style="color: #000;">e-mail</p>
-                                <h3 style="color: #000; font-size: 12px;">info@kaveriinstitutions.com</h3>
-                            </div>
-                            <!-- Footer Contact Item End -->
+                        <!-- Logo -->
+                        <div class="custom-footer-logo">
+                            <img src="images/Kaveri Images/kaveri-logo-3.png" alt="Kaveri Logo">
                         </div>
-                        <!-- Footer Contact Box End -->
+
+                        <!-- Contact Info -->
+                        <div class="custom-footer-contact">
+                            <!-- Phone -->
+                            <a href="tel:08050723945" class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>080 50723945</span>
+                            </a>
+                            <!-- Email -->
+                            <a href="mailto:info@kaveriinstitutions.com" class="contact-icon" title="Email us">
+                                <i class="fas fa-envelope" style="font-size: 22px;"></i>
+                                <span class="email-text">info@kaveriinstitutions.com</span>
+                            </a>
+                        </div>
                     </div>
-                    <!-- About Footer End -->
                 </div>
+
+                <!-- Font Awesome -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+                <style>
+                    .custom-footer-container {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        padding: 20px;
+                        background-color: #f2f2f2;
+                    }
+
+                    .custom-footer-logo img {
+                        max-width: 180px;
+                        height: auto;
+                    }
+
+                    .custom-footer-contact {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 30px;
+                        align-items: center;
+                        white-space: nowrap;
+                    }
+
+                    .contact-icon {
+                        text-decoration: none;
+                        color: #000;
+                        font-size: 16px;
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        transition: transform 0.2s;
+                    }
+
+                    .contact-icon:hover {
+                        transform: scale(1.05);
+                    }
+
+                    .contact-icon i {
+                        font-size: 20px;
+                    }
+
+                    .email-text {
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        max-width: 100%;
+                        word-break: break-word;
+                    }
+
+                    @media (max-width: 768px) {
+                        .custom-footer-container {
+                            flex-direction: column;
+                            align-items: flex-start;
+                            gap: 20px;
+                        }
+
+                        .custom-footer-contact {
+                            flex-direction: column;
+                            align-items: flex-start;
+                            gap: 10px;
+                            width: 100%;
+                        }
+
+                        .email-text {
+                            max-width: 100%;
+                        }
+                    }
+                </style>
+
             </div>
 
             <!-- Footer Copyright Section Start -->

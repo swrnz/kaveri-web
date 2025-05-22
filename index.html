@@ -627,6 +627,15 @@
                 scroll-snap-type: x mandatory;
                 -webkit-overflow-scrolling: touch;
                 cursor: grab;
+                scrollbar-width: none;
+                /* For Firefox */
+                -ms-overflow-style: none;
+                /* For Internet Explorer and Edge */
+            }
+
+            .trendingcoursekvry-container::-webkit-scrollbar {
+                display: none;
+                /* For Chrome, Safari and Opera */
             }
 
             .trendingcoursekvry-card {
